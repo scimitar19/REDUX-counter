@@ -22,6 +22,9 @@ const Counter = () => {
     dispatch({ type: "toggle", payload: false });
     // useSelector((action) => action.type === "increment");
   };
+  const resetHandler = () => {
+    dispatch({ type: "reset", payload: 0 });
+  };
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
@@ -36,8 +39,16 @@ const Counter = () => {
         <button disabled={!toggle} onClick={decrementHandler}>
           Decrement
         </button>
+        <button disabled={!toggle} onClick={resetHandler}>
+          Reset
+        </button>
       </div>
-      <button onClick={toggleCounterHandler}>Toggle Counter</button>
+      <button
+        className={!toggle ? classes["toggle-on"] : classes["toggle-off"]}
+        onClick={toggleCounterHandler}
+      >
+        Toggle Counter
+      </button>
     </main>
   );
 };

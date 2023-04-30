@@ -1,6 +1,12 @@
 import { createStore } from "redux";
 
 function reducerFunction(state, action) {
+  if (action.type === "reset") {
+    return {
+      count: action.payload,
+      toggleCounter: state.toggleCounter,
+    };
+  }
   if (action.type === "increment") {
     return { count: state.count + 1, toggleCounter: state.toggleCounter };
   }
